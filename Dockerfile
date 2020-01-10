@@ -3,8 +3,8 @@ FROM maven:3.6.3-jdk-8
 RUN cd /opt && \
 	git clone https://github.com/luigi-asprino/rocks-map.git && \
 	cd /opt/rocks-map && \
-	cd /opt && \
 	git checkout 0.0.4.pr && \
+	cd /opt && \
 	git clone https://github.com/luigi-asprino/lgu-commons.git && \
 	cd /opt/lgu-commons && \
 	git checkout 0.0.7.pr  && \
