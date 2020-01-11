@@ -12,9 +12,9 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.json.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import it.cnr.istc.stlab.lgu.commons.entitylinking.TagMe;
 import it.cnr.istc.stlab.lgu.commons.model.Lang;
@@ -22,22 +22,27 @@ import it.cnr.istc.stlab.lgu.commons.model.Lang;
 @Path("/linker")
 public class Linker {
 
-	private static Logger logger = LoggerFactory.getLogger(Linker.class);
+	private static Logger logger = LogManager.getLogger(Linker.class);
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/extractEntities")
-	public Response getEntities(@QueryParam("lang") String lang, String text) {
+	public Response getEntities(@QueryParam("lang") String lang, String text,
+			@QueryParam("senseInventory") String senseInventory) {
 		JSONObject obj = new JSONObject(text);
 		List<String> entities = new ArrayList<>();
-		logger.trace("Lang {}", lang);
-		logger.trace("Text: {}", text);
+		logger.trace("Lang " + lang);
+		logger.trace("Text: " + text);
+		if (senseInventory == null)
+			senseInventory = "wiki";
 		try {
 			if (lang == null || lang.equalsIgnoreCase("it")) {
-				entities.addAll(TagMe.getMentionedEntitiesURIUsingTagMe(obj.getString("text"), Lang.IT));
+				entities.addAll(
+						TagMe.getMentionedEntitiesURIUsingTagMe(obj.getString("text"), Lang.IT, senseInventory));
 			} else {
-				entities.addAll(TagMe.getMentionedEntitiesURIUsingTagMe(obj.getString("text"), Lang.EN));
+				entities.addAll(
+						TagMe.getMentionedEntitiesURIUsingTagMe(obj.getString("text"), Lang.EN, senseInventory));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -53,15 +58,18 @@ public class Linker {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/extractMentions")
-	public Response getMentions(@QueryParam("lang") String lang, String text) {
+	public Response getMentions(@QueryParam("lang") String lang, String text,
+			@QueryParam("senseInventory") String senseInventory) {
 		JSONObject obj = new JSONObject(text);
-		logger.trace("Lang {}", lang);
-		logger.trace("Text: {}", text);
+		logger.trace("Lang " + lang);
+		logger.trace("Text: " + text);
+		if (senseInventory == null)
+			senseInventory = "wiki";
 		try {
 			if (lang == null || lang.equalsIgnoreCase("it")) {
-				return Response.ok(TagMe.getMentions(obj.getString("text"), Lang.IT)).build();
+				return Response.ok(TagMe.getMentions(obj.getString("text"), Lang.IT, senseInventory)).build();
 			} else {
-				return Response.ok(TagMe.getMentions(obj.getString("text"), Lang.EN)).build();
+				return Response.ok(TagMe.getMentions(obj.getString("text"), Lang.EN, senseInventory)).build();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -26,7 +26,7 @@ RUN cd /opt && \
 	
 RUN echo "port=${SERVER_PORT}" > /opt/entitylinking/config.properties
 
-RUN echo "${TAGME_KEY}" > /opt/entitylinking/tag.key
+RUN echo "${TAGME_KEY}" > /opt/entitylinking/tagme.key
 
 EXPOSE ${SERVER_PORT}
 

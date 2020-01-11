@@ -8,18 +8,17 @@ import org.apache.commons.configuration2.Configuration;
 import org.apache.commons.configuration2.builder.fluent.Configurations;
 import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.servlets.CrossOriginFilter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class EcodigitServer {
 
-	private static Logger logger = LoggerFactory.getLogger(EcodigitServer.class);
-//	private static Logger logger = Logger. 
+	private static Logger logger = LogManager.getLogger(EcodigitServer.class);
 	private static final String CONFIG_FILE = "config.properties";
 
 	public static void main(String[] args) {
