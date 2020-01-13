@@ -1,8 +1,8 @@
 package it.cnr.istc.stlab.ecodigit.entitylinking.resources;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -31,7 +31,7 @@ public class Linker {
 	public Response getEntities(@QueryParam("lang") String lang, String text,
 			@QueryParam("senseInventory") String senseInventory) {
 		JSONObject obj = new JSONObject(text);
-		List<String> entities = new ArrayList<>();
+		Set<String> entities = new HashSet<>();
 		logger.trace("Lang " + lang);
 		logger.trace("Text: " + text);
 		if (senseInventory == null)
