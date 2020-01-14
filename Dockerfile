@@ -4,6 +4,8 @@ ARG TAGME_KEY
 
 ARG SERVER_PORT
 
+ARG GN_USER
+
 RUN cd /opt && \
 	git clone https://github.com/luigi-asprino/rocks-map.git && \
 	cd /opt/rocks-map && \
@@ -31,6 +33,8 @@ RUN cd /opt && \
 RUN echo "port=${SERVER_PORT}" > /opt/entitylinking/config.properties
 
 RUN echo "${TAGME_KEY}" > /opt/entitylinking/tagme.key
+
+RUN echo "${GN_USER}" > /opt/entitylinking/geonames.username
 
 EXPOSE ${SERVER_PORT}
 
