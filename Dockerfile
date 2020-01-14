@@ -20,6 +20,10 @@ RUN cd /opt && \
 	git checkout 0.0.7.pr  && \
 	mvn clean install -Dgpg.skip && \
 	cd /opt  && \
+	git clone https://github.com/luigi-asprino/lgu-commons-nlp.git && \
+	cd /opt/lgu-commons-nlp && \
+	mvn clean install && \
+	cd /opt  && \
 	git clone https://github.com/ecodigit/entitylinking.git  && \
 	cd /opt/entitylinking  && \
 	mvn clean install 

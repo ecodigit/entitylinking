@@ -27,6 +27,7 @@
 		<jena.version>3.2.0</jena.version>
 		<tint.version>0.2</tint.version>
 		<lgucommons.version>0.0.6-dev</lgucommons.version>
+		<lgucommonsnlp.version>0.0.1</lgucommonsnlp.version>
 		<jaxb.version>2.3.0</jaxb.version>
 		<javaxactivation.version>1.1.1</javaxactivation.version>
 		<guava.version>28.0-jre</guava.version>
@@ -197,6 +198,15 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.30</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>it.cnr.istc.stlab</groupId>
+			<artifactId>lgu.commons.nlp</artifactId>
+			<version>${lgucommonsnlp.version}</version>
+		</dependency>
+		
+		
+		
 
 	</dependencies>
 

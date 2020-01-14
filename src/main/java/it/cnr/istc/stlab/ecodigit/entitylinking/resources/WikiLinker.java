@@ -19,10 +19,10 @@ import org.json.JSONObject;
 import it.cnr.istc.stlab.lgu.commons.entitylinking.TagMe;
 import it.cnr.istc.stlab.lgu.commons.model.Lang;
 
-@Path("/linker")
-public class Linker {
+@Path("/wikipedia")
+public class WikiLinker {
 
-	private static Logger logger = LogManager.getLogger(Linker.class);
+	private static Logger logger = LogManager.getLogger(WikiLinker.class);
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
@@ -61,6 +61,7 @@ public class Linker {
 	public Response getMentions(@QueryParam("lang") String lang, String text,
 			@QueryParam("senseInventory") String senseInventory) {
 		JSONObject obj = new JSONObject(text);
+		
 		logger.trace("Lang " + lang);
 		logger.trace("Text: " + text);
 		if (senseInventory == null)
@@ -76,5 +77,7 @@ public class Linker {
 			return Response.serverError().build();
 		}
 	}
+
+	
 
 }
