@@ -18,7 +18,7 @@
 		<jackson.version>2.10.2</jackson.version>
 		<jackson.databind.version>2.9.9</jackson.databind.version>
 		<jersey2.version>2.23.2</jersey2.version>
-		<jetty.version>9.4.17.v20190418</jetty.version>
+		<jetty.version>9.4.41.v20210516</jetty.version>
 		<log4j.version>1.7.7</log4j.version>
 		<orgjson.version>20180130</orgjson.version>
 		<sl4j.version>1.7.7</sl4j.version>
