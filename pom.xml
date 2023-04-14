@@ -20,7 +20,7 @@
 		<jersey2.version>2.23.2</jersey2.version>
 		<jetty.version>9.4.17.v20190418</jetty.version>
 		<log4j.version>1.7.7</log4j.version>
-		<orgjson.version>20180130</orgjson.version>
+		<orgjson.version>20230227</orgjson.version>
 		<sl4j.version>1.7.7</sl4j.version>
 		<swagger.version>1.5.10</swagger.version>
 		<activemq.version>5.15.3</activemq.version>
